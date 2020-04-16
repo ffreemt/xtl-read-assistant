@@ -1,0 +1,31 @@
+name: Codecov
+on: [push]
+jobs:
+  run:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.6]
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Python
+      uses: actions/setup-python@master
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies  # https://molecule.readthedocs.io/en/latest/testing.html
+      run: |
+        sudo apt-get install libicu-dev
+        python -m pip install --upgrade pip
+        python -m pip install poetry
+        poetry install -v
+        poetry run python -m pytest -v --cov=xtl_read_assistant --cov-report=xml --cov-report=term --cov-report=html
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1.0.5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        yml: ./codecov.yml
+        fail_ci_if_error: true

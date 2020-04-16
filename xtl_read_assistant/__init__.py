@@ -1,0 +1,7 @@
+""" __init__ """
+from xtl_read_assistant.read_assistant import read_assistant  # noqa: F401
+# version__ = "0.0.1"
+# date__ = "2020.3.24"
+__version__ = "0.0.2"
+__date__ = "2020.4.16"
+VERSION = tuple(__version__.split("."))

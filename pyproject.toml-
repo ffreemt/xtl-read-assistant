@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "xtl-read-assistant"
+version = "0.0.1"
+description = "X as a third foreign language reading assistant"
+authors = ["ffreemt"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/ffremt/xtl-read-assistant"
+repository = "https://github.com/ffremt/xtl-read-assistant"
+keywords = ["mt", "language", "learning"]
+classifiers = [
+    "Environment :: Console",
+    "Framework :: MT",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Machine Translation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Tools",
+]
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+pyperclip = "^1.7.0"
+python-dotenv = "^0.12.0"
+logzero = "^1.5.0"
+environs = "^7.3.1"
+pynput = "^1.6.8"
+google-tr-async-free = "^0.0.2"
+absl-py = "^0.9.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+# New scripts
+[tool.poetry.scripts]
+read-assistant = "read_assistant.__main__.main"
+my-script = "read_assistant.log_revision:start"
+hello = "read_assistant.hello:main"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
