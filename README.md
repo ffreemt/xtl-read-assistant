@@ -1,5 +1,5 @@
 # xtl-read-assistant ![build](https://github.com/ffreemt/xtl-read-assistant/workflows/build/badge.svg)[![codecov](https://codecov.io/gh/ffreemt/xtl-read-assistant/branch/master/graph/badge.svg)](https://codecov.io/gh/ffreemt/xtl-read-assistant)[![PyPI version](https://badge.fury.io/py/xtl-read-assistant.svg)](https://badge.fury.io/py/xtl-read-assistant)
-deepl translate for free with async and proxy support, based on pyppeteer
+x as a third language reading assistant tool
 
 
 ### Pre-installation of libicu
