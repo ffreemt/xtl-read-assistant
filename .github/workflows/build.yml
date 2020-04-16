@@ -45,6 +45,6 @@ jobs:
       env:
         POETRY_HTTP_BASIC_PYPI_USERNAME: ${{ secrets.PYPI_USER }}
         POETRY_HTTP_BASIC_PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        # POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKENV }}
+        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKENV }}
       run: |
-        # poetry publish -v
+        poetry publish -v
