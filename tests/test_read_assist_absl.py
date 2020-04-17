@@ -1,5 +1,6 @@
-from xtl_read_assistant import read_assist
+""" test absl """
 from absl import flags
+from xtl_read_assistant import read_assist
 
 
 def test_absl():
