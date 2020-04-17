@@ -18,4 +18,4 @@ exclude_lines =
     def main():
 [paths]
 source =
-  deepl-tr-async
+  xtl-read-assistant

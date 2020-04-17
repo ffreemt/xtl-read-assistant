@@ -89,7 +89,8 @@ flags.DEFINE_boolean(
 # FLAGS(shlex.split("app --from-lang=en"))
 
 
-def proc_absl(argv: list):  # pylint: disable=too-many-statements, too-many-branches
+# def proc_absl(argv: list):  # pylint: disable=too-many-statements, too-many-branches
+def read_assist(argv: list):  # pylint: disable=too-many-statements, too-many-branches
     """ proc_argv """
 
     # del argv
@@ -367,7 +368,7 @@ def main():
     ln1.start()
     print("hotkey ctrl-alt-x to quit ...")
 
-    app.run(proc_absl)
+    app.run(read_assist)
 
 
 if __name__ == "__main__":

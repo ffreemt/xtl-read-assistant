@@ -24,13 +24,10 @@ python -c "import xtl_read_assistant; print(xtl_read_assistant.__version__)"
 ```
 #### Patch `pyppeteer/connection.py`
 
-The pyppeteer package does not work too well with websockets 7+. Either downgrade the websockets to 6 or manually perform the following patch.
-
-Change site-packages\pyppeteer\connection.py  `line 44`  to:
-`
-            # self._url, max_size=None, loop=self._loop)
-            self._url, max_size=None, loop=self._loop, ping_interval=None, ping_timeout=None)
-`
+This is no longer necessary. But may sure an updated version of deepl-tr-async (at least 0.0.3, deepl-tr-async 0.0.3 and up uses pyppeteer2) is used. E.g.
+```
+pip install deepl-tr-async -U
+```
 
 ### Usage
 
