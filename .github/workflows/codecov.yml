@@ -14,6 +14,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: pytest with coverage/codecov  # https://molecule.readthedocs.io/en/latest/testing.html
+    - id: codecove
       run: |
         sudo apt-get install libicu-dev
         sudo apt-get install xclip  #for pyperclip
@@ -21,6 +22,8 @@ jobs:
         python -m pip install poetry
         poetry install -v
         poetry run python -m pytest -k version -v --cov=xtl_read_assistant --cov-report=xml --cov-report=term --cov-report=html
+    - if: steps.codecove.exitcode > 0
+        run: echo "Something went wrong"
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.0.5
       with:
