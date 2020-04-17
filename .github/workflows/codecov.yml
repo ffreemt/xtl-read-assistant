@@ -21,7 +21,9 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install poetry
         poetry install -v
-        poetry run python -m pytest -k version -v --cov=xtl_read_assistant --cov-report=xml --cov-report=term --cov-report=html
+        poetry run python -m pytest -v --cov=xtl_read_assistant --cov-report=xml --cov-report=term --cov-report=html
+    - if: steps.codecove.exitcode > 0
+      run: echo "Something went wrong"
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.0.5
       with:
