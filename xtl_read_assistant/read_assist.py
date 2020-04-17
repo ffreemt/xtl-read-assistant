@@ -90,11 +90,11 @@ flags.DEFINE_boolean(
 
 
 # def proc_absl(argv: list):  # pylint: disable=too-many-statements, too-many-branches
-def read_assist(argv: list):  # pylint: disable=too-many-statements, too-many-branches
+def read_assist(argv: list, debug: bool = False):  # pylint: disable=too-many-statements, too-many-branches
     """ proc_argv """
 
     # del argv
-    if FLAGS.debug:
+    if FLAGS.debug:  # pragma: no cover
         logzero.loglevel(10)  # logging.DEBUG
     else:
         logzero.loglevel(20)  # logging.INFO
@@ -102,7 +102,7 @@ def read_assist(argv: list):  # pylint: disable=too-many-statements, too-many-br
     width = FLAGS.width
 
     # version = "0.0.2"
-    if FLAGS.version:
+    if FLAGS.version:  # pragma: no cover
         indent = " " * 10
         msg = indent + "xtl read-assistant tool %s\n\n" % __version__
         msg1 = "Brought to you by mu@qq41947782. Join qq group 316287378 to be kept updated about this tool."
@@ -115,12 +115,14 @@ def read_assist(argv: list):  # pylint: disable=too-many-statements, too-many-br
         )
         print(msg + msg1)
         raise SystemExit(0)
-
-    loop.run_until_complete(trans_clipb())
+    if debug:
+        return FLAGS.m, FLAGS.s, FLAGS.t
+    else:
+        loop.run_until_complete(trans_clipb())
 
 
 # def on_activate():
-def on_trans_hk():
+def on_trans_hk():  # pragma: no cover
     """ hotkey translate clipboard"""
     logger.debug('Global hotkey activated')
     cliptext = pyperclip.paste()
@@ -155,7 +157,7 @@ def for_canonical1(f):
 # """
 
 
-async def trans_clipb():  # pylint: disable=too-many-locals
+async def trans_clipb():  # pylint: disable=too-many-locals  # pragma: no cover
     """ translate the clipboard """
 
     while True:
@@ -323,7 +325,7 @@ async def trans_clipb():  # pylint: disable=too-many-locals
 
 
 # def main0():
-def main():
+def main():  # pragma: no cover
     """ main """
 
     hotkey = keyboard.HotKey(

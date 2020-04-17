@@ -24,10 +24,15 @@ python -c "import xtl_read_assistant; print(xtl_read_assistant.__version__)"
 ```
 #### Patch `pyppeteer/connection.py`
 
-This is no longer necessary. But may sure an updated version of deepl-tr-async (at least 0.0.3, deepl-tr-async 0.0.3 and up uses pyppeteer2) is used. E.g.
+This is no longer necessary. But make sure an updated version of deepl-tr-async is used (at least 0.0.3, deepl-tr-async 0.0.3 and up uses pyppeteer2). E.g.
 ```
 pip install deepl-tr-async -U
 ```
+
+If for some reason you have to use `pyppeteer` istead of `pyppeteer2`, do this patch https://github.com/miyakogi/pyppeteer/pull/160/files
+
+(
+`xtl-read-assistant` relies on `deepl-tr-async` which in turns relies on `pyppeteer` that again replies on `websockets`. `pyppeteer`, however, does not play well with new versions of websockets 8.x. Hence, either downgrade websockts to 6.x or patch manually according to [https://github.com/miyakogi/pyppeteer/pull/160/files] or use pyppeteer2)
 
 ### Usage
 
