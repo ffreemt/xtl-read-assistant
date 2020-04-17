@@ -1,0 +1,4 @@
+
+[m[32m]9;8;"USERNAME"\@]9;8;"COMPUTERNAME"\ [93mC:\dl\Dropbox\mat-dir\myapps\pypi-projects\xtl-read-assistant[90m
+[90m$[m ]9;12\echo off 
+comment: if: steps.codecove.exitcode
