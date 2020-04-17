@@ -1,6 +1,0 @@
-
-[m[32m]9;8;"USERNAME"\@]9;8;"COMPUTERNAME"\ [93mC:\dl\Dropbox\mat-dir\myapps\pypi-projects\xtl-read-assistant[90m
-[90m$[m ]9;12\echo off 
-comment: if: steps.codecove.exitcode
-[master 854b8d4] if: steps.codecove.exitcode
- 2 files changed, 7 insertions(+), 4 deletions(-)
