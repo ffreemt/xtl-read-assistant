@@ -32,7 +32,7 @@ pip install deepl-tr-async -U
 If for some reason you have to use `pyppeteer` istead of `pyppeteer2`, do this patch https://github.com/miyakogi/pyppeteer/pull/160/files
 
 (
-`xtl-read-assistant` relies on `deepl-tr-async` which in turns relies on `pyppeteer` that again replies on `websockets`. `pyppeteer`, however, does not play well with new versions of websockets 8.x. Hence, either downgrade websockts to 6.x or patch manually according to [https://github.com/miyakogi/pyppeteer/pull/160/files] or use pyppeteer2)
+`xtl-read-assistant` relies on `deepl-tr-async` which in turn relies on `pyppeteer` that again replies on `websockets`. `pyppeteer`, however, does not play well with new versions of websockets 8.x. Hence, either downgrade websockts to 6.x or patch manually according to [https://github.com/miyakogi/pyppeteer/pull/160/files] or use pyppeteer2)
 
 ### Usage
 
