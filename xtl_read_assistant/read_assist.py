@@ -117,8 +117,8 @@ def read_assist(argv: list, debug: bool = False):  # pylint: disable=too-many-st
         raise SystemExit(0)
     if debug:
         return FLAGS.m, FLAGS.s, FLAGS.t
-    else:
-        loop.run_until_complete(trans_clipb())
+
+    loop.run_until_complete(trans_clipb())
 
 
 # def on_activate():
