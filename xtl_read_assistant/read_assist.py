@@ -29,9 +29,10 @@ from deepl_tr_async.detect_lang import detect_lang
 
 loop = asyncio.get_event_loop()  # pylint: disable=invalid-name
 queue = janus.Queue(loop=loop)  # pylint: disable=invalid-name
-s_lang = "de"
-lang_list = ["en", "en", "de"]
-services = ["deepl", "google", ]
+
+# s_lang = "de"  # pylint: disable=invalid-name
+# lang_list = ["en", "en", "de"]  # pylint: disable=invalid-name
+# services = ["deepl", "google", ]  # pylint: disable=invalid-name
 
 DEEPL_LANG = ["zh", "en", "de", "fr", "es", "pt", "it", "nl", "pt", "ru"]
 DEEPL_LANG_STR = ", ".join(DEEPL_LANG)
@@ -90,10 +91,13 @@ flags.DEFINE_boolean(
 
 
 # def proc_absl(argv: list):  # pylint: disable=too-many-statements, too-many-branches
-def read_assist(argv: list, debug: bool = False):  # pylint: disable=too-many-statements, too-many-branches
+def read_assist(  # pylint: disable=too-many-statements, too-many-branches
+        argv: list,
+        debug: bool = False,
+):
     """ proc_argv """
 
-    # del argv
+    del argv
     if FLAGS.debug:  # pragma: no cover
         logzero.loglevel(10)  # logging.DEBUG
     else:
@@ -119,7 +123,7 @@ def read_assist(argv: list, debug: bool = False):  # pylint: disable=too-many-st
         return FLAGS.m, FLAGS.s, FLAGS.t
 
     loop.run_until_complete(trans_clipb())
-
+    return None
 
 # def on_activate():
 def on_trans_hk():  # pragma: no cover

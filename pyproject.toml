@@ -18,7 +18,7 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.1"
 pyperclip = "^1.7.0"
 python-dotenv = "^0.12.0"
 logzero = "^1.5.0"
@@ -27,7 +27,7 @@ pynput = "^1.6.8"
 absl-py = "^0.9.0"
 polyglot = "^16.7.4"
 janus = "^0.4.0"
-deepl-tr-async = "^0.0.2"
+deepl-tr-async = "^0.0.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
