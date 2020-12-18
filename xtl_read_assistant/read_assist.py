@@ -1,5 +1,4 @@
-r"""
-X as a third language reading assistant tool
+r"""X as a third language reading assistant tool.
 
 Translate the clipboard content
 """
@@ -7,6 +6,7 @@ Translate the clipboard content
 # based on playground\shortcut-key-python\janus-ctrl-alt-g-activate.py
 
 import asyncio
+import re
 from textwrap import fill
 
 import janus
@@ -41,8 +41,8 @@ DEEPL_LANG_STR = ", ".join(DEEPL_LANG)
 FLAGS = flags.FLAGS
 flags.DEFINE_string(
     "z-extra-info",
-    "info",
-    "supply text anywhere in the command line when --nocopyfrom",
+    "",
+    "supply text anywhere in the command line with --nocopyfrom",
 )
 flags.DEFINE_string(
     # 'from-lang',
@@ -72,6 +72,9 @@ flags.DEFINE_boolean(
     "auto detect source lang, if False, fall back to third-lang",
     short_name="a",
 )
+flags.DEFINE_boolean(
+    "keep", False, "keep format, if False, paragraphs will be combined, mainly for pdf text where each line is a paragraph", short_name="k",
+)
 
 flags.DEFINE_integer(
     "width", 60, "display width", short_name="w",
@@ -95,8 +98,7 @@ def read_assist(  # pylint: disable=too-many-statements, too-many-branches
         argv: list,
         debug: bool = False,
 ):
-    """ proc_argv """
-
+    """Do proc_argv."""
     del argv
     if FLAGS.debug:  # pragma: no cover
         logzero.loglevel(10)  # logging.DEBUG
@@ -127,9 +129,14 @@ def read_assist(  # pylint: disable=too-many-statements, too-many-branches
 
 # def on_activate():
 def on_trans_hk():  # pragma: no cover
-    """ hotkey translate clipboard"""
+    """Hotkey translate clipboard."""
     logger.debug('Global hotkey activated')
     cliptext = pyperclip.paste()
+
+    # combine lines for pdf text copy
+    if not FLAGS.keep:
+        cliptext = re.sub(r"\s+", " ", cliptext).strip()
+
     indent = " " * 4
     _ = fill(
         cliptext,
@@ -144,7 +151,7 @@ def on_trans_hk():  # pragma: no cover
 
 
 def on_exit_hk():
-    """ hotkey inject _exit to queue for exit """
+    """Hotkey inject _exit to queue for exit."""
     # print('111 Global hotkey activated!')
     queue.sync_q.put("_exit")
 
@@ -162,8 +169,7 @@ def for_canonical1(f):
 
 
 async def trans_clipb():  # pylint: disable=too-many-locals  # pragma: no cover
-    """ translate the clipboard """
-
+    """Translate the clipboard."""
     while True:
         # wait forever if none in the queue
 
@@ -300,6 +306,20 @@ async def trans_clipb():  # pylint: disable=too-many-locals  # pragma: no cover
 
         await asyncio.sleep(.4)
 
+    _ = """
+    # gracefully exit: refer to Example 3.2, Using asyncio by Hastingh
+    # pending = asyncio.all_tasks(loop=loop)  # py3.7?
+    # pending = asyncio.Tasks.all_tasks(loop=loop)
+    # pending = asyncio.current_task(loop=loop)
+
+    pending = asyncio.tasks.Task.all_tasks()
+    for task in pending:
+        task.cancel()
+    group = asyncio.gather(*pending, return_exceptions=True)
+    loop.run_until_complete(group)
+    loop.close()
+    # """
+
     # print('Done.')
     msg = "Brought to you by mu@qq41947782. Join qq-group 316287378 (https://jq.qq.com/?_wv=1027&k=5TuKBSn) to be kept updated about this tool."
     msg = fill(msg, initial_indent=" " * 10, subsequent_indent=" " * 10, width=60)
@@ -330,8 +350,7 @@ async def trans_clipb():  # pylint: disable=too-many-locals  # pragma: no cover
 
 # def main0():
 def main():  # pragma: no cover
-    """ main """
-
+    """Do main."""
     hotkey = keyboard.HotKey(
         keyboard.HotKey.parse('<ctrl>+<alt>+g'),
         # lambda: on_activate(to_lang="zh"),

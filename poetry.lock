@@ -179,14 +179,6 @@ testing = ["packaging", "importlib-resources"]
 
 [[package]]
 category = "main"
-description = "Mixed sync-async queue to interoperate between asyncio tasks and classic threads"
-name = "janus"
-optional = false
-python-versions = ">=3.5.3"
-version = "0.4.0"
-
-[[package]]
-category = "main"
 description = "A small Python class to quickly measure the time taken while executing a block of indented lines"
 name = "linetimer"
 optional = false
@@ -561,7 +553,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "4dc7c6547887f67e02bc52fdf1f1b364fc4dbd55f28b8507e5000aba82e417dd"
+content-hash = "d6665a2f1593b2215b7cc293223af27005e3b2d0f820b0cfbc0526de4f8d120e"
 python-versions = "^3.6.1"
 
 [metadata.files]
@@ -653,10 +645,6 @@ fuzzywuzzy = [
 importlib-metadata = [
     {file = "importlib_metadata-1.6.0-py2.py3-none-any.whl", hash = "sha256:2a688cbaa90e0cc587f1df48bdc97a6eadccdcd9c35fb3f976a09e3b5016d90f"},
     {file = "importlib_metadata-1.6.0.tar.gz", hash = "sha256:34513a8a0c4962bc66d35b359558fd8a5e10cd472d37aec5f66858addef32c1e"},
-]
-janus = [
-    {file = "janus-0.4.0-py3-none-any.whl", hash = "sha256:86878806559274376b83193bfd992ad94576d1024ddfc69cf1a908bf20d6b37d"},
-    {file = "janus-0.4.0.tar.gz", hash = "sha256:cfc221683160b91b35bae1917e2957b78dad10a2e634f4f8ed119ed72e2a88ef"},
 ]
 linetimer = [
     {file = "linetimer-0.1.4-py2-none-any.whl", hash = "sha256:19ce9c6e6758873ed6c6260b81d7e902e97205f2775671285d404cb1d484d9fa"},

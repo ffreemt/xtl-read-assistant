@@ -1,4 +1,4 @@
-""" __init__ """
+"""init."""
 from xtl_read_assistant.read_assist import read_assist  # noqa: F401
 # version__ = "0.0.1"
 # date__ = "2020.3.24"
